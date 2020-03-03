@@ -62,17 +62,35 @@ label {
 
 .btn {
     grid-column: span 2;
-    background-color: transparent;
+    background-color: var(--background-color);
     border: 2px solid #333;
     color: black;
     padding: .5rem 1rem;
     font-weight: bold;
     border-radius: 1rem;
     cursor: pointer;
+    
+    --background-color: #ffffff66;
+    --boarder-size: 2px;
 }
 
-.btn:hover {
-    background-color: #ffffff66;
+.btn.btn-border-pop::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    boarder: var(--boarder-size) solid var(--background-color);
+}
+
+.btn.btn-border-pop:hover::before,
+.btn.btn-border-pop:focus::before {
+    top: calc(var(--boarder-size) * 2);
+    left: calc(var(--boarder-size) * 2);
+    right: calc(var(--boarder-size) * 2);
+    bottom: calc(var(--boarder-size) * 2);
 }
 
 h4 {
